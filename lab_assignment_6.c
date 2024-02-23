@@ -1,10 +1,30 @@
 #include <stdio.h>
+//Tyler Discala
+//Lab Assignment 6
 
+//edited function
 int search(int numbers[], int low, int high, int value) 
 {
-	return -1;
-}
+    if (low > high) {
+        // The element is not in the array
+        return -1;
+    }
 
+    int mid = low + (high - low) / 2;
+    // Checks middle
+    if (numbers[mid] == value) {
+        return mid;
+    }
+
+    // If smaller than mid then its in the left subarray
+    if (numbers[mid] > value) {
+        return search(numbers, low, mid - 1, value);
+    }
+
+    // Else the element can only be present to the right
+	//Recursion
+    return search(numbers, mid + 1,high,value);
+}
 void printArray(int numbers[], int sz)
 {
 	int i;
